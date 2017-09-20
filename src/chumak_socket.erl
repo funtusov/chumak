@@ -132,7 +132,7 @@ set_option(Name, Value, #state{socket_options = Options} = State)
        Name =:= curve_publickey, is_binary(Value);
        Name =:= curve_secretkey, is_binary(Value);
        Name =:= curve_serverkey, is_binary(Value);
-       Name =:= zmq_req_relaxed, is_boolean(Value); ->
+       Name =:= zmq_req_relaxed, is_boolean(Value) ->
     {reply, ok, State#state{socket_options = Options#{Name => Value}}};
 set_option(Name, Value, #state{socket_options = Options} = State) 
   when Name =:= curve_clientkeys ->
