@@ -20,7 +20,8 @@
                           curve_publickey  | %% binary()
                           curve_secretkey  | %% binary()
                           curve_serverkey  | %% binary()
-                          curve_clientkeys.  %% [binary() | z85_key()]
+                          curve_clientkeys | %% [binary() | z85_key()]
+                          zmq_req_relaxed  . %% true | false 
                           
 -type security_mechanism() :: null |
                               curve.

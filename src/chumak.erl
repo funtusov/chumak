@@ -94,6 +94,17 @@ socket(Type)
 %%   they know the CURVE secret key). If a list of keys is provided, only
 %%   clients with those public keys can connect to the server. You can provide
 %%   the keys as 32-byte binaries or as 40-character strings.</dd>
+%%
+%%   <dt>zmq_req_relaxed</dt>
+%%   <dd>- relax strict alternation between request and reply</dd>
+%%   <dd>- type: boolean()</dd>
+%%   <dd>By default, a REQ socket does not allow initiating a new request with 
+%%   zmq_send(3) until the reply to the previous one has been received. When 
+%%   set to 1, sending another message is allowed and has the effect of 
+%%   disconnecting the underlying connection to the peer from which the 
+%%   reply was expected, triggering a reconnection attempt on transports 
+%%   that support it. The request-reply state machine is reset and 
+%%   a new request is sent to the next available peer.</dd>
 %% </dl>
 
 -spec set_socket_option(SocketPid::pid(),
