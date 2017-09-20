@@ -47,8 +47,8 @@ accept_peer(State, PeerPid) ->
 peer_ready(State, _PeerPid, _Identity) ->
     {noreply, State}.
 
-% send(#chumak_rep{last_recv_peer=nil}=State, _Data, _From) ->
-%     {reply, {error, efsm}, State};
+send(#chumak_rep{last_recv_peer=nil}=State, _Data, _From) ->
+    {reply, ok, State};
 
 send(#chumak_rep{last_recv_peer=LastRecvPeer}=State, Data, _From)
   when is_pid(LastRecvPeer) ->
